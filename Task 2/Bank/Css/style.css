@@ -1,0 +1,107 @@
+.form {
+    margin: auto;
+    height: 1000px;
+}
+
+h1 {
+    font-family: fantasy;
+    color: white;
+    margin-left: 26px;
+}
+
+span {
+    font-size: 40px;
+    color: white;
+}
+
+.navbar {
+    background-color: #007bff;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 9999;
+}
+
+.navbar .container {
+    justify-content: space-between;
+    align-items: end;
+}
+
+.left {
+    display: flex;
+    align-items: end;
+}
+
+.right {
+    width: 50%;
+    justify-content: space-between;
+    display: flex;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+li a {
+    margin-right: 10px;
+    color: white;
+    font-size: 20px;
+}
+body{
+    background-image: url("../Images/Bank.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* .fullPage {
+
+} */
+
+form {
+    height: 600px;
+    background-color: #007bff66;
+    padding: 20px;
+    margin-top: 200px;
+}
+
+.btn {
+    margin: auto;
+    display: block;
+    margin-top: 25px;
+}
+
+label {
+    color: #0572e7;
+    font-size: 25px;
+    font-family: fantasy;
+}
+
+.result {
+    /* background-color: #066cd9; */
+    width: 100%;
+    color: white;
+    /* height: 55px; */
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    height: fit-content;
+}
+
+th {
+    font-size: 22px;
+    color: #032e58ed;
+}
+
+td {
+    font-size: 25px;
+}
+
+.result .container .col-8{
+    background-color: #066cd9db;
+    padding: 15px;
+    box-sizing: border-box;
+}
