@@ -46,7 +46,7 @@ $users = [
         'phones'=>[],
     ],
     
-    
+
 ];
 
 $result = "<table class='table table-striped table-bordered'><thead class='thead-dark'>";
@@ -85,8 +85,8 @@ for ($i = 0; $i < count($users); $i++) {
         }
         $result .= "</td>";
     }
+    $result .= "</tr>";
 }
-$result .= "</tr>";
 $result .= "  </tbody></table>";
 ?>
 
