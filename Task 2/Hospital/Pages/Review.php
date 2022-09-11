@@ -15,24 +15,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST) {
         die;
     } else {
         $result = 0;
-        $evaluation=array();
+        $evaluation = array();
         if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST) {
             for ($i = 1; $i < 6; $i++) {
                 if ($_POST["option" . $i] == "bad") {
                     $result += 0;
-                    array_push($evaluation,"Bad");
+                    array_push($evaluation, "Bad");
                 }
                 if ($_POST["option" . $i] == "good") {
                     $result += 3;
-                    array_push($evaluation,"Good");
+                    array_push($evaluation, "Good");
                 }
                 if ($_POST["option" . $i] == "veryGood") {
                     $result += 5;
-                    array_push($evaluation,"Very Good");
+                    array_push($evaluation, "Very Good");
                 }
                 if ($_POST["option" . $i] == "excellent") {
                     $result += 10;
-                    array_push($evaluation,"Excellent");
+                    array_push($evaluation, "Excellent");
                 }
             }
         }
@@ -63,38 +63,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST) {
                                 <tbody>
                                     <tr>
                                         <th scope="row">Are you satisfied with the level of hygiene?</th>
-                                        <td><input type="radio" name="option1"  value="bad"></td>
-                                        <td><input type="radio" name="option1"  value="good"></td>
-                                        <td><input type="radio" name="option1"  value="veryGood"></td>
-                                        <td><input type="radio" name="option1"  value="excellent"></td>
+                                        <td><input type="radio" name="option1" value="bad"></td>
+                                        <td><input type="radio" name="option1" value="good"></td>
+                                        <td><input type="radio" name="option1" value="veryGood"></td>
+                                        <td><input type="radio" name="option1" value="excellent"></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Are you satisfied with the price of services?</th>
-                                        <td><input type="radio" name="option2"  value="bad"></td>
-                                        <td><input type="radio" name="option2"  value="good"></td>
-                                        <td><input type="radio" name="option2"  value="veryGood"></td>
-                                        <td><input type="radio" name="option2"  value="excellent"></td>
+                                        <td><input type="radio" name="option2" value="bad"></td>
+                                        <td><input type="radio" name="option2" value="good"></td>
+                                        <td><input type="radio" name="option2" value="veryGood"></td>
+                                        <td><input type="radio" name="option2" value="excellent"></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Are you satisfied with the nursing service? </th>
-                                        <td><input type="radio" name="option3"  value="bad"></td>
-                                        <td><input type="radio" name="option3"  value="good"></td>
-                                        <td><input type="radio" name="option3"  value="veryGood"></td>
-                                        <td><input type="radio" name="option3"  value="excellent"></td>
+                                        <td><input type="radio" name="option3" value="bad"></td>
+                                        <td><input type="radio" name="option3" value="good"></td>
+                                        <td><input type="radio" name="option3" value="veryGood"></td>
+                                        <td><input type="radio" name="option3" value="excellent"></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Are you satisfied with the level of the doctors? </th>
-                                        <td><input type="radio" name="option4"  value="bad"></td>
-                                        <td><input type="radio" name="option4"  value="good"></td>
-                                        <td><input type="radio" name="option4"  value="veryGood"></td>
-                                        <td><input type="radio" name="option4"  value="excellent"></td>
+                                        <td><input type="radio" name="option4" value="bad"></td>
+                                        <td><input type="radio" name="option4" value="good"></td>
+                                        <td><input type="radio" name="option4" value="veryGood"></td>
+                                        <td><input type="radio" name="option4" value="excellent"></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Are you satisfied with the calmness in the hospital? </th>
-                                        <td><input type="radio" name="option5"  value="bad"></td>
-                                        <td><input type="radio" name="option5"  value="good"></td>
-                                        <td><input type="radio" name="option5"  value="veryGood"></td>
-                                        <td><input type="radio" name="option5"  value="excellent"></td>
+                                        <td><input type="radio" name="option5" value="bad"></td>
+                                        <td><input type="radio" name="option5" value="good"></td>
+                                        <td><input type="radio" name="option5" value="veryGood"></td>
+                                        <td><input type="radio" name="option5" value="excellent"></td>
                                     </tr>
                                 </tbody>
                             </table>

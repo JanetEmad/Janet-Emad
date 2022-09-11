@@ -2,10 +2,10 @@
 include("../Layouts/Header.php");
 $FinalEvaluation = "";
 if ($_SESSION["result"] < 25) {
-    $totalReview="Bad";
+    $totalReview = "Bad";
     $FinalEvaluation .= "We will call you later on this phone  " . $_SESSION["number"] . " to be able to make the service better for you";
 } else {
-    $totalReview="Good";
+    $totalReview = "Good";
     $FinalEvaluation .= "Thank you For Your Time.";
 }
 ?>
@@ -66,19 +66,19 @@ if ($_SESSION["result"] < 25) {
                                         echo $result; ?>
                                     </tr>
                                     <?php
-                                    if($totalReview=="Good"){
-                                        $result="";
-                                        $result.="<tr class='alert alert-success' >";
-                                    }else{
-                                        $result="";
-                                        $result.="<tr class='alert alert-danger' >";
-                                    }   
-                                        $result.="<th scope='row'>TOTAL REVIEW </th>";
-                                        $result .= "<td>";
-                                        $result .= $totalReview;
-                                        $result .= "</td>";
-                                        echo $result; ?>
-                                    <?="</tr>"?>
+                                    if ($totalReview == "Good") {
+                                        $result = "";
+                                        $result .= "<tr class='alert alert-success' >";
+                                    } else {
+                                        $result = "";
+                                        $result .= "<tr class='alert alert-danger' >";
+                                    }
+                                    $result .= "<th scope='row'>TOTAL REVIEW </th>";
+                                    $result .= "<td>";
+                                    $result .= $totalReview;
+                                    $result .= "</td>";
+                                    echo $result; ?>
+                                    <?= "</tr>" ?>
                                 </tbody>
                             </table>
                             <div class="result form-control">

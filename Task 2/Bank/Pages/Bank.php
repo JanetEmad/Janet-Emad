@@ -15,20 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST) {
               </tr>
             </thead>
             <tbody>";
-            $result .= "<tr><td>User Name</td><td>";
-            $result .= $_POST["name"]."</td></tr>";
+        $result .= "<tr><td>User Name</td><td>";
+        $result .= $_POST["name"] . "</td></tr>";
 
         $result .= "<tr><td>Interest Rate</td>";
         if ($_POST["years"] <= 3) {
-            $interestRate=(($_POST["loan"] * 10) / 100)*$_POST["years"];
+            $interestRate = (($_POST["loan"] * 10) / 100) * $_POST["years"];
             $result .= "<td>" . $interestRate . " EGP</td>";
         } else {
-            $interestRate=(($_POST["loan"] * 15) / 100)*$_POST["years"];
-            $result .= "<td>" . $interestRate . " EGP</td>";        }
-        // $result .= ;
+            $interestRate = (($_POST["loan"] * 15) / 100) * $_POST["years"];
+            $result .= "<td>" . $interestRate . " EGP</td>";
+        }
         $result .= "</tr></td>";
         $result .= "<tr><td>Loan After Interest</td>
-        <td>" . $_POST["loan"]+$interestRate . " EGP</td></tr>";
+        <td>" . $_POST["loan"] + $interestRate . " EGP</td></tr>";
         $result .= "<tr><td>Number of Years</td>
         <td>" . $_POST["years"] . "</td></tr>";
         if ($_POST["years"] <= 3) {
