@@ -51,21 +51,20 @@ li a {
     font-size: 20px;
 }
 
-li a:hover{
+li a:hover {
     color: #705640;
 }
 
 body {
-    background-image: url("../Images/superMarket.jpg");
+    background-image: url("../Images/superMarket5.webp");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
 }
 
 form {
-    height: 600px;
-    background-color: #8c6c52b0;
     padding: 20px;
-    margin-top: 200px;
+    margin-top: 60px;
+    height: fit-content;
 }
 
 .button {
@@ -76,7 +75,8 @@ form {
     background-color: #705640;
     border-color: #705640;
 }
-.button:hover{
+
+.button:hover {
     background-color: #87674b;
 }
 
@@ -107,28 +107,27 @@ td {
     text-align: center;
 }
 
-.col-12 {
-    background-color: #8c6c52b0;
-    padding: 15px;
-    box-sizing: border-box;
-    /* width: fit-content; */
+tr {
+    color: white;
+    font-weight: 700;
 }
 
-/* .x{
-    width: 70%;
-    margin: auto;
-} */
+.col-12 {
+    background-color: #8c6c52b0;
+    /* padding: 15px; */
+    box-sizing: border-box;
+}
 
-.product{
+.product {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.product input{
-    height: 50px;
+.table {
+    margin: auto;
 }
 
-.table{
-    margin: auto;
+.x {
+    table-layout: fixed;
 }
