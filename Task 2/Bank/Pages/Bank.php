@@ -1,5 +1,14 @@
 <?php
 $result = "";
+function interest($years)
+{
+    if ($years <= 3) {
+        define("INTEREST", 10);
+    } else {
+        define("INTEREST", 15);
+    }
+    return INTEREST;
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST) {
     if (!empty($_POST["name"]) && !empty($_POST["loan"]) && !empty($_POST["years"])) {
         $result .= "<div class='result'>
@@ -17,15 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST) {
             <tbody>";
         $result .= "<tr><td>User Name</td><td>";
         $result .= $_POST["name"] . "</td></tr>";
-
         $result .= "<tr><td>Interest Rate</td>";
-        if ($_POST["years"] <= 3) {
-            $interestRate = (($_POST["loan"] * 10) / 100) * $_POST["years"];
-            $result .= "<td>" . $interestRate . " EGP</td>";
-        } else {
-            $interestRate = (($_POST["loan"] * 15) / 100) * $_POST["years"];
-            $result .= "<td>" . $interestRate . " EGP</td>";
-        }
+        $interestRate = (($_POST["loan"] * interest($_POST["years"])) / 100) * $_POST["years"];
+        $result .= "<td>" . $interestRate . " EGP</td>";
         $result .= "</tr></td>";
         $result .= "<tr><td>Loan After Interest</td>
         <td>" . $_POST["loan"] + $interestRate . " EGP</td></tr>";

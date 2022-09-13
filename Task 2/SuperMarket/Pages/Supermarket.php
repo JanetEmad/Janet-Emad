@@ -1,7 +1,35 @@
 <?php
-$result = "";
-$result2 = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]) && $_POST["submit"] == "Submit") {
+$result2="";
+function discount($totalPrice)
+{
+    if ($totalPrice < 1000) {
+        $discountValue=0;
+    } else if ($totalPrice < 3000) {
+        $discountValue=10;
+    } else if ($totalPrice < 4500) {
+        $discountValue=15;
+    } else if ($totalPrice > 4500) {
+        $discountValue=20;
+        
+    }
+    $discount = ($discountValue / 100) * $totalPrice;
+    return $discount;
+}
+function delivery($city)
+{
+    if ($city == "Cairo") {
+        $delivery = 0;
+    } else if ($city == "Giza") {
+        $delivery = 30;
+    } else if ($city == "Alex") {
+        $delivery = 50;
+    } else {
+        $delivery = 100;
+    }
+    return $delivery;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $result .= "
         <table class='table'>
     <thead>
@@ -24,14 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]) && $_POST["s
     </table><button class='form-control my-5 button w-50' name='receipt' value='Receipt'>Receipt</button>";
 }
 $totalPrice = 0;
-$productNames = array();
-$productPrices = array();
-$productQuantitys = array();
-$productSubTotals = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["receipt"])) {
-    if ($_POST["receipt"] == "Receipt") {
-        $result2 .= "<table class='table x'>
+    $result2 .= "<table class='table x'>
             <thead>
                 <tr>
                     <th scope='col'>Product Name</th>
@@ -41,60 +64,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["receipt"])) {
                 </tr>
             </thead>
             <tbody>";
-        for ($i = 0; $i < $_POST["products"]; $i++) {
-            array_push($productNames, $_POST['productName' . $i]);
-            array_push($productPrices, $_POST['productPrice' . $i]);
-            array_push($productQuantitys, $_POST['productQuantity' . $i]);
-            array_push($productSubTotals, ($_POST['productQuantity' . $i] * $_POST['productPrice' . $i]));
-        }
-        for ($i = 0; $i < $_POST["products"]; $i++) {
-            $result2 .= "
-        <tr>
-            <td ><input class='col-11' type='text' name='productName{$i}' value='$productNames[$i]'></td>
-            <td ><input class='col-11' type='number' name='productPrice{$i}' value='$productPrices[$i]'></td>
-            <td ><input class='col-11' type='number' name='productQuantity{$i}' value='$productQuantitys[$i]'></td>
-            <td ><input class='col-11' type='number' name='productSubTotal{$i}' value='$productSubTotals[$i]'><br></td>
-        </tr>";
-        }
+
+    for ($i = 0; $i < $_POST["products"]; $i++) {
+        $_POST['productSubTotals' . $i] = $_POST['productQuantity' . $i] * $_POST['productPrice' . $i];
+        $totalPrice += $_POST['productSubTotals' . $i];
         $result2 .= "
+        <tr>
+            <td ><input class='col-11' type='text' name='productName{$i}' value='" . $_POST['productName' . $i] . "'></td>
+            <td ><input class='col-11' type='number' name='productPrice{$i}' value='" . $_POST['productPrice' . $i] . "'></td>
+            <td ><input class='col-11' type='number' name='productQuantity{$i}' value='" . $_POST['productPrice' . $i] . "'></td>
+            <td ><input class='col-11' type='number' name='productSubTotal{$i}' value='" . $_POST['productSubTotals' . $i] . "'><br></td>
+        </tr>";
+    }
+    $result2 .= "
             </tbody>
             </table><br><br><br>";
 
-        $result2 .= "<table class='table'>
+    $result2 .= "<table class='table'>
     <tbody>";
-        $result2 .= "<tr><td>Client Name</td><td>" . $_POST["name"] . "</td></tr>";
-        $result2 .= "<tr><td>City</td><td>" . $_POST["city"] . "</td></tr>";
-        for ($i = 0; $i < $_POST["products"]; $i++) {
-            for ($j = 0; $j < $_POST["productQuantity{$i}"]; $j++) {
-                $totalPrice += $_POST["productPrice{$i}"];
-            }
-        }
-        $result2 .= "<tr><td>Total</td><td>" . $totalPrice . " EGP</td></tr>";
-        if ($totalPrice < 1000) {
-            $discount = 0;
-        } else if ($totalPrice < 3000) {
-            $discount = (10 / 100) * $totalPrice;
-        } else if ($totalPrice < 4500) {
-            $discount = (15 / 100) * $totalPrice;
-        } else if ($totalPrice > 4500) {
-            $discount = (20 / 100) * $totalPrice;
-        }
-        $result2 .= "<tr><td>Discount</td><td>" . $discount . " EGP</td></tr>";
-        $result2 .= "<tr><td>Total after Discount</td><td>" . $totalPrice - $discount . " EGP</td></tr>";
-        if ($_POST["city"] == "Cairo") {
-            $delivery = 0;
-        } else if ($_POST["city"] == "Giza") {
-            $delivery = 30;
-        } else if ($_POST["city"] == "Alex") {
-            $delivery = 50;
-        } else {
-            $delivery = 100;
-        }
-        $result2 .= "<tr><td>Delivery</td><td>" . $delivery . " EGP</td></tr>";
-        $result2 .= "<tr><td>Net Total</td><td>" . $delivery + $totalPrice - $discount . " EGP</td></tr>";
-    }
+    $result2 .= "<tr><td>Client Name</td><td>" . $_POST["name"] . "</td></tr>";
+    $result2 .= "<tr><td>City</td><td>" . $_POST["city"] . "</td></tr>";
+    $result2 .= "<tr><td>Total</td><td>" . $totalPrice . " EGP</td></tr>";
+    $result2 .= "<tr><td>Discount</td><td>" . discount($totalPrice) . " EGP</td></tr>";
+    $result2 .= "<tr><td>Total after Discount</td><td>" . $totalPrice - discount($totalPrice) . " EGP</td></tr>";
+    $result2 .= "<tr><td>Delivery</td><td>" . delivery($_POST['city']) . " EGP</td></tr>";
+    $result2 .= "<tr><td>Net Total</td><td>" . delivery($_POST['city']) + $totalPrice - discount($totalPrice) . " EGP</td></tr>";
 }
-
 
 ?>
 
@@ -151,7 +146,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["receipt"])) {
                                 <label class="my-3" for="name">User Name</label>
                                 <input class="form-control my-3" type="text" name="name" placeholder="Enter Your Name..." value="<?= empty($_POST["name"]) ? "" : $_POST["name"] ?>">
                                 <label class="my-3" for="city">City</label>
-                                <!-- <input class="form-control my-3" type="select" name="city" placeholder="Choose the City..."> -->
                                 <select class="form-control" name="city" id="first">
                                     <option value="" disabled selected>Country</option>
                                     <option <?php if (isset($_POST["city"]) && $_POST["city"] == "Cairo") { ?>selected="true" <?php }; ?> value="Cairo">Cairo</option>
@@ -163,9 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["receipt"])) {
                                 <input class="form-control my-3" type="number" name="products" placeholder="Enter the Number of Products..." value="<?= empty($_POST["products"]) ? "" : $_POST["products"] ?>">
                                 <button class="form-control my-5 button w-50" name="submit" value="Submit">Submit</button>
                                 <?= empty($result) ? " " : $result; ?>
-
                                 <?= empty($result2) ? " " : $result2; ?>
-
                             </form>
                         </div>
                     </div>
