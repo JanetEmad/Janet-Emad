@@ -8,17 +8,17 @@ for ($i = 0; $i < $_SESSION["members"]; $i++) {
     $result .= "<div class='form-check'>
     <h1>Member " . ($i + 1) . "<h1>
     <input class='form-control my-3' type='text' name='memberName{$i}'  placeholder='Member Name'>
-    <input class='form-check-input' type='checkbox' name='football{$i}' value='football' id='Football'>
-    <label class='form-check-label' for='Football'>Footbal 300 LE</label>
+    <input class='form-check-input' type='checkbox' name='football{$i}' value='football' id='Football{$i}'>
+    <label class='form-check-label' for='Football{$i}'>Footbal 300 LE</label>
 <br>
-    <input class='form-check-input' type='checkbox' name='swimming{$i}' value='swimming' id='Swimming'>
-    <label class='form-check-label' for='Swimming'>Swimming 250 LE</label>
+    <input class='form-check-input' type='checkbox' name='swimming{$i}' value='swimming' id='Swimming{$i}'>
+    <label class='form-check-label' for='Swimming{$i}'>Swimming 250 LE</label>
 <br>
-    <input class='form-check-input' type='checkbox' name='volleyball{$i}' value='volleyball' id='Volleyball'>
-    <label class='form-check-label' for='Volleyball'>Volleyball 150 LE</label>
+    <input class='form-check-input' type='checkbox' name='volleyball{$i}' value='volleyball' id='Volleyball{$i}'>
+    <label class='form-check-label' for='Volleyball{$i}'>Volleyball 150 LE</label>
 <br>
-    <input class='form-check-input' type='checkbox' name='others{$i}' value='others' id='Others'>
-    <label class='form-check-label' for='Others'>Others 100 LE</label>
+    <input class='form-check-input' type='checkbox' name='others{$i}' value='others' id='Others{$i}'>
+    <label class='form-check-label' for='Others{$i}'>Others 100 LE</label>
     </div> <hr><br>";
     if (isset($_POST['football' . $i])) {
         array_push($games, $_POST['football' . $i]);

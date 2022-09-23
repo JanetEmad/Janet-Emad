@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2022 at 07:26 PM
+-- Generation Time: Sep 23, 2022 at 12:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -244,7 +244,8 @@ CREATE TABLE `products` (
 CREATE TABLE `products_specs` (
   `product_id` bigint(20) UNSIGNED NOT NULL,
   `spec_id` bigint(20) UNSIGNED NOT NULL,
-  `value` varchar(255) NOT NULL
+  `value_en` varchar(255) NOT NULL,
+  `value_ar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -328,6 +329,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `phone`, `image`, `gender`, `verification_code`, `status`, `email_verified_at`, `created_at`, `updated_at`) VALUES
+(13, 'Janet', 'Emad', 'jero2015emad@gmail.com', '$2y$10$58ZxCbItWfqst5KTORxzWuu2AxH8sUDvL/JtNsngJSu7dB3LYYlWS', '01115953142', 'default.jpg', 'f', 642165, 1, '2022-09-21 11:06:08', '2022-09-20 18:31:17', '2022-09-21 11:06:08');
 
 --
 -- Indexes for dumped tables
@@ -547,7 +555,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
