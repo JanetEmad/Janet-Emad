@@ -1,0 +1,20 @@
+.product-img{
+    border: none;
+}
+
+.brand{
+    border: none;
+    width: 13%;
+}
+
+.ordered-products img {
+    height: 300px;
+}
+
+.recent-products img {
+    height: 300px;
+}
+
+.all-products img {
+    height: 300px;
+}
